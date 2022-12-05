@@ -1,10 +1,14 @@
 import './App.css';
-import Home from './pages/Home';
-import {Route, Routes} from "react-router-dom"
-import Login from './pages/Login';
 import Routing from './Routing';
-
+import React from 'react';
+import {AuthContextProvider} from './context/AuthContext';
+import Footer from './components/Footer';
 export function App() {
+
     return (
-        <Routing/>)
+        <>
+            <Routing/>
+
+        </>
+    )
 }
