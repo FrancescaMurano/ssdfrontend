@@ -1,18 +1,15 @@
-import React, {Component} from 'react'
-import DressCard from '../components/DressCard'
+import React, {Component, useContext} from 'react'
 import Dresses from '../components/Dresses'
-import FiltersButton from '../components/FiltersButton'
-import Footer from '../components/Footer'
-import SearchBar from '../components/SearchBar'
+import DressContext from '../context/DressContext'
 
-export default class Home extends Component {
-    render() {
+
+const Home = () => {
+    const {dress_loan} = useContext(DressContext);
+
         return (
             <div className='flex flex-col h-100'>
-                <FiltersButton></FiltersButton>
-                {/* <SearchBar></SearchBar> */}
                 <Dresses></Dresses>
             </div>
         )
     }
-}
+export default Home;

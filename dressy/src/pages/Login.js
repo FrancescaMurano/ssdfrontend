@@ -9,7 +9,6 @@ const Login = () => {
     const userName = useRef("");
     const password = useRef("");
     const {login,user} = useContext(AuthContext);
-    const navigate = useNavigate();
 
     const loginSubmit = async () => {
         let payload = {

@@ -8,26 +8,36 @@ import AuthContext from "./context/AuthContext";
 import AdminHome from "./pages/AdminHome";
 
 const Routing = () => {
-    const {user} = useContext(AuthContext);
-   
+    const {user,role} = useContext(AuthContext);
+
     return (
         <Routes>
-            {console.log("IN ROUTE",user)}
+          {console.log(role)}
             <Route path="/"
-                element={
-                    user ? (
-                        <Home />
-                      ) : (
-                        <Login/>
-                      )}/>
-               
+                element={ !user ? (
+                  <Login/>
+                ) : (
+                  (
+                    role === 'commessi'?(
+                      <AdminHome/>
+                    ):(
+                      <Home/>
+                    )
+                  )
+                )}/>
+
             <Route path="/login"
-                element={
-                    user ? (
-                        <Navigate to={"/"} replace/>
-                      ) : (
-                        <Login />
-                      )}/>
+                element={ !user ? (
+                  <Login/>
+                ) : (
+                  (
+                    role === 'commessi'?(
+                      <AdminHome/>
+                    ):(
+                      <Home/>
+                    )
+                  )
+                )}/>
             <Route path="/orders"
               element={
                 user ? (

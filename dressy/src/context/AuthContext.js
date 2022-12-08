@@ -16,29 +16,22 @@ export const AuthContextProvider = ({children}) => {
         return null;
     });
 
-    // const [role, setRole] = useState(() => {
-        
-    //     if (localStorage.getItem("tokens")) {
-    //         let tokens = JSON.parse(localStorage.getItem("tokens"));
-    //         return jwt_decode(tokens.role);
-    //     }
 
-    //     return null;
-    // });
+    const [role, setRole] = useState();
  
     const navigate = useNavigate();
 
     const login = async (payload) => {
         const url = 'https://ssd.pingflood.tk/api/v1/login/'
-        console.log("ok")
         console.log(payload)
         const apiResponse = await axios.post(url, payload).then((response) => {
-            console.log(response.status)
-            console.log(response.data)
             if (response.status === 200) {
                 console.log(response.data)
                 localStorage.setItem("tokens", JSON.stringify(response.data));
+
                 setUser(jwt_decode(response.data.access));
+                setRole(jwt_decode(response.data.access).groups[0]);
+              
             } 
         }).catch((error) => {
             console.log(error)
@@ -46,7 +39,6 @@ export const AuthContextProvider = ({children}) => {
                 console.log("credenziali errate")
             }
         })
-        
         navigate("/");
 
     };
@@ -54,6 +46,7 @@ export const AuthContextProvider = ({children}) => {
 
         localStorage.removeItem("tokens");
         setUser(null);
+        setRole(null)
         console.log("local",localStorage.getItem("tokens"))
         console.log("user",user)
 
@@ -62,8 +55,9 @@ export const AuthContextProvider = ({children}) => {
 
 
     return (<AuthContext.Provider value={
-        {user,/*role,*/ login, logout}
+        {user,role,login, logout}
     }> {children} </AuthContext.Provider>);
 };
+
 
 export default AuthContext;

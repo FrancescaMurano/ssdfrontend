@@ -2,9 +2,6 @@ import React, {Component, useState} from 'react'
 import DressCard from '../components/DressCard'
 import Dresses from '../components/Dresses'
 import DressForm from '../components/DressForm'
-import FiltersButton from '../components/FiltersButton'
-import Footer from '../components/Footer'
-import SearchBar from '../components/SearchBar'
 
 const AdminHome = () => {
     const [showForm, setShowForm] = useState(false);
@@ -15,7 +12,7 @@ const AdminHome = () => {
                 <DressForm functions={
                         [setShowForm]
                     }
-                    s/>
+                    />
             ) : (
                 <>
 

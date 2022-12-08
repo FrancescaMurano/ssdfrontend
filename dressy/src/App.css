@@ -29,8 +29,16 @@
 }
 
 
-.h-screen {height: 100vh; }
-
+.h-screen { 
+  min-height: 100vh;
+  max-height: fit-content;
+}
+.z-index {
+  z-index: 1;
+}
+.fit-content{
+  height: fit-content;
+}
 
 @keyframes App-logo-spin {
   from {
