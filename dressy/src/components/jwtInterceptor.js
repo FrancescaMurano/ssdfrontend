@@ -30,7 +30,8 @@ jwtInterceptor.interceptors.response.use(
        url,
         payload
       );
-      localStorage.setItem("tokens", JSON.stringify(apiResponse.data));
+      authData.access = apiResponse.data.access
+      localStorage.setItem("tokens", JSON.stringify(authData));
       error.config.headers[
         "Authorization"
       ] = `Bearer ${apiResponse.data.access}`;
