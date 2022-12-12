@@ -17,7 +17,7 @@ jwtInterceptor.interceptors.response.use(
   },
   async (error) => {
     
-    if (error.response.status === 401 || error.response.status === 400) {
+    if (error.response.status === 400 || error.response.status === 401) {
       const authData = JSON.parse(localStorage.getItem("tokens"));
       
       const payload = {
@@ -30,8 +30,10 @@ jwtInterceptor.interceptors.response.use(
        url,
         payload
       );
+
       authData.access = apiResponse.data.access
       localStorage.setItem("tokens", JSON.stringify(authData));
+      
       error.config.headers[
         "Authorization"
       ] = `Bearer ${apiResponse.data.access}`;

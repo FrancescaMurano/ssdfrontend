@@ -1,5 +1,5 @@
 import axios from "axios";
-import {createContext, useMemo, useState} from "react";
+import {createContext, useState} from "react";
 import jwt_decode from "jwt-decode";
 import {useNavigate} from "react-router-dom";
 
@@ -16,20 +16,29 @@ export const AuthContextProvider = ({children}) => {
         return null;
     });
 
+    const [role, setRole] = useState(() => {
+        
+        if (localStorage.getItem("tokens")) {
+            let tokens = JSON.parse(localStorage.getItem("tokens"));
+            return jwt_decode(tokens.access).groups[0];
+        }
 
-    const [role, setRole] = useState();
+        return null;
+    });
+
+   
  
     const navigate = useNavigate();
 
     const login = async (payload) => {
         const url = 'https://ssd.pingflood.tk/api/v1/login/'
-        console.log(payload)
         const apiResponse = await axios.post(url, payload).then((response) => {
             if (response.status === 200) {
                 console.log(response.data)
                 localStorage.setItem("tokens", JSON.stringify(response.data));
 
                 setUser(jwt_decode(response.data.access));
+                console.log(jwt_decode(response.data.access).groups[0])
                 setRole(jwt_decode(response.data.access).groups[0]);
               
             } 

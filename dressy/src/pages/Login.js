@@ -1,14 +1,13 @@
-import React, {Component, useContext, useRef} from 'react'
+import React, {useContext, useRef} from 'react'
 import user_icon from "../assets/icons/user_icon.png"
 import pass_icon from "../assets/icons/pass_icon.png"
-import {Link, Navigate, useNavigate} from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 
 const Login = () => {
 
     const userName = useRef("");
     const password = useRef("");
-    const {login,user} = useContext(AuthContext);
+    const {login} = useContext(AuthContext);
 
     const loginSubmit = async () => {
         let payload = {
@@ -24,13 +23,13 @@ const Login = () => {
             <h1 className='font-winter text-6xl pb-5'>Login</h1>
             <div className='bg-black p-16 bg-sky-900/50'>
                 <div className="flex flex-row m-6 items-center" id='username'>
-                    <img src={user_icon}
+                    <img alt="" src={user_icon}
                         className="mr-5 h-5 justify-center"/>
                     <input className="border-4 border-black-500/50" type="text"
                         ref={userName}/>
                 </div>
                 <div className="flex flex-row m-6 items-center" id='password'>
-                    <img src={pass_icon}
+                    <img alt="" src={pass_icon}
                         className="mr-5 h-5 "/>
                     <input className="border-4 border-black-500/50" type="password"
                         ref={password}/>
