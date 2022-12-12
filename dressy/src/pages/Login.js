@@ -25,13 +25,13 @@ const Login = () => {
                 <div className="flex flex-row m-6 items-center" id='username'>
                     <img alt="" src={user_icon}
                         className="mr-5 h-5 justify-center"/>
-                    <input className="border-4 border-black-500/50" type="text"
+                    <input className="pl-1 border-4 border-black-500/50" type="text"
                         ref={userName}/>
                 </div>
                 <div className="flex flex-row m-6 items-center" id='password'>
                     <img alt="" src={pass_icon}
                         className="mr-5 h-5 "/>
-                    <input className="border-4 border-black-500/50" type="password"
+                    <input className="pl-1 border-4 border-black-500/50" type="password"
                         ref={password}/>
                 </div>
                 <div className='flex justify-center items-center'>
