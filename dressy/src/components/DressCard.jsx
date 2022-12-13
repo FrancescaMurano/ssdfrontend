@@ -22,7 +22,7 @@ const DressCard = ({dress}) => {
     }
     return (<> {
         modify_form & role === 'commessi' ? 
-        <div className=" drop-shadow-2xl bg-white border border-black-800 w-80 m-10 z-index object-contain bg-white rounded-3xl mx-auto fixed inset-0 fit-content p-8 ">
+        <div className="drop-shadow-2xl bg-white border border-black-800 w-80 m-10 z-index object-contain bg-white rounded-3xl mx-auto fixed inset-0 fit-content p-8 ">
 
             <ModifyDressForm key={
                     uuidv4()
@@ -47,7 +47,7 @@ const DressCard = ({dress}) => {
             <></>
         )
     }
-        <div className="flex flex-col p-2 min-w-full md:w-48  h-100 bg-white drop-shadow rounded-md">
+        <div className="h-300 flex flex-col p-2 min-w-full md:w-48 bg-white drop-shadow rounded-md">
 
             {
             role === 'commessi' & !dress.deleted ? (
