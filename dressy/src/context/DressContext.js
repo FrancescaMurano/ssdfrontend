@@ -20,7 +20,7 @@ export const DressContextProvider = ({children}) => {
             "dress": dress.id,
             "loaner": user.user_id
         }
-        const apiResponse = jwtInterceptor.post(url, payload).then((response) => {
+        jwtInterceptor.post(url, payload).then((response) => {
             if (response.status === 201) {
                 alert("Dress Loaned successfully!")
             }
@@ -32,7 +32,7 @@ export const DressContextProvider = ({children}) => {
             
 
         })
-        navigate("/");
+        navigate(0);
 
     }
 
@@ -61,7 +61,7 @@ export const DressContextProvider = ({children}) => {
             "deleted": false
         }
 
-        const apiResponse = jwtInterceptor.post(url, payload).then((response) => {
+        jwtInterceptor.post(url, payload).then((response) => {
             console.log(response)
             if (response.status === 201) {
                 alert("Dress added successfully!")
@@ -71,7 +71,7 @@ export const DressContextProvider = ({children}) => {
             console.log(error)
             if (error.response.status === 400) {
                 if (error.response.data.detail) {
-                    errors += "\nBrand:\t" + error.response.data.detail +"\n"                    // error.response.data.detail.map((el)=>errors+=el)
+                    errors += "\nBrand:\t" + error.response.data.detail +"\n"                 
                 }
                 if (error.response.data.priceInCents) {
                     errors += "\nPrice:\t"
@@ -93,7 +93,7 @@ export const DressContextProvider = ({children}) => {
             }
 
         })
-        // navigate("/");
+        navigate("/");
 
     }
     const remove_dress = (dress_id) => {
@@ -102,20 +102,17 @@ export const DressContextProvider = ({children}) => {
         const url = 'https://ssd.pingflood.tk/api/v1/dress/' + dress_id
 
 
-        const apiResponse = jwtInterceptor.delete(url).then((response) => {
+        jwtInterceptor.delete(url).then((response) => {
             console.log(response)
             if (response.status === 204) {
                 alert("Dress removed successfully!")
-                navigate("/")
+                navigate(0)
             }
 
         }).catch((error) => {
             console.log(error)
             if (error.response.status === 400) 
                 alert(error.response.data.detail)
-
-            
-
         })
 
 
@@ -133,8 +130,7 @@ export const DressContextProvider = ({children}) => {
             "description": dress[5].toString(),
             "deleted": false
         }
-        console.log(payload)
-        const apiResponse = jwtInterceptor.put(url, payload).then((response) => {
+        jwtInterceptor.put(url, payload).then((response) => {
             console.log(response)
             if (response.status === 200) {
                 alert("Dress modified successfully!")
@@ -171,7 +167,6 @@ export const DressContextProvider = ({children}) => {
     }
 
     const edit_loan=(loan,loan_id)=>{
-        console.log("loan"+loan)
         const url = 'https://ssd.pingflood.tk/api/v1/loan/' + loan_id
         let payload = {
             "id": loan_id,
@@ -184,8 +179,7 @@ export const DressContextProvider = ({children}) => {
             "insertBy": loan[7],
             "terminated": loan[8]
         }
-        console.log(payload)
-        const apiResponse = jwtInterceptor.put(url, payload).then((response) => {
+        jwtInterceptor.put(url, payload).then((response) => {
             console.log(response)
             if (response.status === 200) {
                 alert("Loan modified successfully!")
@@ -193,28 +187,29 @@ export const DressContextProvider = ({children}) => {
                 }
         }).catch((error) => {
             let errors = "";
-            console.log(error)
+            console.log(error.response)
             if (error.response.status === 400) {
-                // if (error.response.data.detail) {
-                //     errors += "\nBrand:\t" + error.response.data.detail
-                //     // error.response.data.detail.map((el)=>errors+=el)
-                // }
-                // if (error.response.data.priceInCents) {
-                //     errors += "\nPrice:\t"
-                //     error.response.data.priceInCents.map((el) => errors += el)
-                // }
-                // if (error.response.data.size) {
-                //     errors += "\nSize:\t"
-                //     error.response.data.size.map((el) => errors += el)
-                // }
-                // if (error.response.data.description) {
-                //     errors += "\nDescription:\t"
-                //     error.response.data.description.map((el) => errors += el)
-                // }
-                // if (error.response.data.materialType) {
-                //     errors += "\nMaterial type:\t"
-                //     error.response.data.materialType.map((el) => errors += el)
-                // }
+                if (error.response.data.dress) {
+                    errors += "\nDress:\t" + error.response.data.dress
+                    error.response.data.dress.map((el)=>errors+=el+'\n')
+                }
+                if (error.response.data.startDate) {
+                    errors += "\nStart Date:\t"
+                    error.response.data.startDate.map((el) => errors+=el+'\n')
+                }
+                if (error.response.data.endDate) {
+                    errors += "\nEnd Date:\t"
+                    error.response.data.endDate.map((el) => errors+=el+'\n')
+                }
+                if (error.response.data.detail) {
+                    errors+=error.response.data.detail+'\n'
+                }
+                if (error.response.data.loaner) {
+                    errors += "\nLoaner:\t"
+                    error.response.data.loaner.map((el) =>errors+=el+'\n')
+                }
+               
+            
                 alert(errors)
             }
 
@@ -226,10 +221,9 @@ export const DressContextProvider = ({children}) => {
         const url = 'https://ssd.pingflood.tk/api/v1/loan/' + loan_id
 
 
-        const apiResponse = jwtInterceptor.delete(url).then((response) => {
-            console.log(response)
+        jwtInterceptor.delete(url).then((response) => {
             if (response.status === 204) {
-                alert("Loan removed successfully!")
+                alert("Loan terminated successfully!")
                 navigate(0)
             }
 

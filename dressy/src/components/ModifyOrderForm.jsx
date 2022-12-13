@@ -106,33 +106,8 @@ useEffect(() => {
           defaultValue={loan.loanDurationDays}
 
           />
-           <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="grid-first-name"
-          >
-          Insert By:
-        </label>
-        <input name="input"
-          className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-          id="grid-first-name"
-          type="text"
-          defaultValue={loan.insertBy}
-
-          />
-           <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="grid-first-name"
-          >
-          Terminated:
-        </label>
-        <input name="input"
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-          id="grid-first-name"
-          type="text"
-          defaultValue={loan.terminated}
-
-          />
-      
+          
+          
       </form>
       <button className="bg-red-800/80 hover:bg-red-800/70 w-full m-2 p-2 text-white" 
       onClick={()=>edit_loan(getInputData(document.getElementsByName("input")),loan.id
