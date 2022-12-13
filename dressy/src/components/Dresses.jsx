@@ -15,7 +15,7 @@ const Dresses = () => {
         setOrdered(true)
         let arr = [... dresses];
         arr.sort(function (a, b) {
-            return a.priceInCents > b.priceInCents;
+            return a.priceInCents - b.priceInCents;
         })
         setDressesForPrice(arr)
     }
@@ -23,7 +23,7 @@ const Dresses = () => {
         console.log(dresses)
         let arr = [... dresses];
         arr.sort(function (a, b) {
-            return a.deleted > b.deleted;
+            return a.deleted - b.deleted;
         })
         setDresses(arr)
     }
