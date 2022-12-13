@@ -50,7 +50,6 @@ export const DressContextProvider = ({children}) => {
     }
 
     const add_new_dress = (dress) => {
-        console.log(dress)
 
         const url = 'https://ssd.pingflood.tk/api/v1/dress/'
         let payload = {
