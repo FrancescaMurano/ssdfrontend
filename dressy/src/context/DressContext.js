@@ -23,6 +23,7 @@ export const DressContextProvider = ({children}) => {
         jwtInterceptor.post(url, payload).then((response) => {
             if (response.status === 201) {
                 alert("Dress Loaned successfully!")
+                navigate(0)
             }
         }).catch((error) => {
             console.log(error)
@@ -32,7 +33,7 @@ export const DressContextProvider = ({children}) => {
             
 
         })
-        navigate(0);
+
 
     }
 

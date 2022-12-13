@@ -88,7 +88,7 @@ const LoanRegisterCard = ({dress, close}) => {
             onClick={
                 () => {
                     dress_loan(dress, create_correct_date_format(startDateValue), create_correct_date_format(endDateValue));
-                    close(false)
+                    
                 }
         }>
             CONFIRM ORDER</button>
