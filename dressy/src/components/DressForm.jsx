@@ -35,7 +35,6 @@ const DressForm = ({ functions }) => {
           type="text"
           placeholder="Insert brand name..."
           />
-        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         <label
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-first-name"
@@ -48,7 +47,6 @@ const DressForm = ({ functions }) => {
           type="text"
           placeholder="Insert dress price in cents..."
           />
-        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         <label
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-first-name"
@@ -61,7 +59,6 @@ const DressForm = ({ functions }) => {
           type="text"
           placeholder="Insert dress colour.."
           />
-        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         <label
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-first-name"
@@ -74,7 +71,6 @@ const DressForm = ({ functions }) => {
           type="text"
           placeholder="Insert dress material.."
           />
-        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         <label
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-first-name"
@@ -87,7 +83,6 @@ const DressForm = ({ functions }) => {
           type="text"
           placeholder="Insert dress size.."
           />
-        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         <label
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-first-name"
@@ -100,7 +95,6 @@ const DressForm = ({ functions }) => {
           type="text"
           placeholder="Insert dress description.."
           />
-        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
       
       
       

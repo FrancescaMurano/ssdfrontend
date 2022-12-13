@@ -50,17 +50,19 @@ export const DressContextProvider = ({children}) => {
     }
 
     const add_new_dress = (dress) => {
+        console.log(dress)
 
         const url = 'https://ssd.pingflood.tk/api/v1/dress/'
         let payload = {
             "brandType": dress[0].toString(),
             "priceInCents": parseInt(dress[1]),
-            "materialType": dress[2].toString(),
-            "colorType": dress[3].toString(),
+            "colorType": dress[2].toString(),
+            "materialType": dress[3].toString(),
             "size": parseInt(dress[4]),
             "description": dress[5].toString(),
             "deleted": false
         }
+        console.log(payload)
 
         jwtInterceptor.post(url, payload).then((response) => {
             console.log(response)
@@ -72,7 +74,7 @@ export const DressContextProvider = ({children}) => {
             console.log(error)
             if (error.response.status === 400) {
                 if (error.response.data.detail) {
-                    errors += "\nBrand:\t" + error.response.data.detail +"\n"                 
+                    errors += "\n"+ error.response.data.detail +"\n"                 
                 }
                 if (error.response.data.priceInCents) {
                     errors += "\nPrice:\t"
@@ -142,8 +144,7 @@ export const DressContextProvider = ({children}) => {
             console.log(error)
             if (error.response.status === 400) {
                 if (error.response.data.detail) {
-                    errors += "\nBrand:\t" + error.response.data.detail
-                    // error.response.data.detail.map((el)=>errors+=el)
+                    errors += "\n" + error.response.data.detail
                 }
                 if (error.response.data.priceInCents) {
                     errors += "\nPrice:\t"
