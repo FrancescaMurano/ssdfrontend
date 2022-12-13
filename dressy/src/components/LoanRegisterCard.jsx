@@ -22,7 +22,7 @@ const LoanRegisterCard = ({dress, close}) => {
 
     }
     return (
-        <div className=" flex flex-col m-auto z-index">
+        <div className=" flex flex-col m-auto z-index p-5">
             <IoIosCloseCircle className="flex self-end h-8 w-8 m-2 " color="red"
                 onClick={
                     () => close(false)
