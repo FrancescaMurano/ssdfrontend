@@ -47,7 +47,7 @@ const DressCard = ({dress}) => {
                 <></>
             )
         }
-            <div className="h-300 flex flex-col p-2 min-w-full md:w-48 bg-white drop-shadow rounded-md">
+            <div className="flex flex-col p-2 min-w-full   min-h-full  md:w-48 bg-white drop-shadow rounded-md">
 
                 {
                 role === 'commessi' ? (
@@ -126,7 +126,7 @@ const DressCard = ({dress}) => {
                 <div className="grid grid-cols-2 bg-gray-800/20 p-2 h-full w-full">
                     <h3 className="font-medium">Description:
                     </h3>
-                    <h3 className="break-words overflow-scroll">
+                    <h3 className="break-words">
                         {
                         dress.description
                     }</h3>
