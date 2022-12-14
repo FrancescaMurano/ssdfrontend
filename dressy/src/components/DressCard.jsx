@@ -135,7 +135,7 @@ const DressCard = ({dress}) => {
                 role === 'commessi' ? (
                     <> {
                         dress.deleted ? (
-                            <div className="grid pl-2 pt-1 pb-1  grid-cols-2 bg-green-800/40 ">
+                            <div className="grid pl-2 pt-1 pb-1  grid-cols-2 bg-red-800/40 ">
                                 <h3 className="font-medium">Deleted:
                                 </h3>
                                 <h3> {
@@ -145,7 +145,7 @@ const DressCard = ({dress}) => {
 
                         ) : (
 
-                            <div className="grid pl-2 pt-1 pb-1  grid-cols-2 bg-red-800/40 ">
+                            <div className="grid pl-2 pt-1 pb-1  grid-cols-2 bg-green-800/40 ">
                                 <h3 className="font-medium">Deleted:
                                 </h3>
                                 <h3> {
