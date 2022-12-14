@@ -27,10 +27,18 @@ export const DressContextProvider = ({children}) => {
             }
         }).catch((error) => {
             console.log(error)
-            if (error.response.status === 400) 
-                alert(error.response.data.detail)
+            if (error.response.status === 400)
+            {
+                if (error.response.data.detail)
+                    alert(error.response.data.detail)
+                else if(error.response.data.startDate)
+                    alert(error.response.data.startDate)
+            }
+                
+
 
             
+
 
         })
 
@@ -73,23 +81,23 @@ export const DressContextProvider = ({children}) => {
             console.log(error)
             if (error.response.status === 400) {
                 if (error.response.data.detail) {
-                    errors += "\n"+ error.response.data.detail +"\n"                 
+                    errors += "\n" + error.response.data.detail + "\n"
                 }
                 if (error.response.data.priceInCents) {
                     errors += "\nPrice:\t"
-                    error.response.data.priceInCents.map((el) => errors += el+"\n" )
+                    error.response.data.priceInCents.map((el) => errors += el + "\n")
                 }
                 if (error.response.data.size) {
                     errors += "\nSize:\t"
-                    error.response.data.size.map((el) => errors += el+"\n" )
+                    error.response.data.size.map((el) => errors += el + "\n")
                 }
                 if (error.response.data.description) {
                     errors += "\nDescription:\t"
-                    error.response.data.description.map((el) => errors += el+"\n" )
+                    error.response.data.description.map((el) => errors += el + "\n")
                 }
                 if (error.response.data.materialType) {
                     errors += "\nMaterial type:\t"
-                    error.response.data.materialType.map((el) => errors += el+"\n" )
+                    error.response.data.materialType.map((el) => errors += el + "\n")
                 }
                 alert(errors)
             }
@@ -115,6 +123,7 @@ export const DressContextProvider = ({children}) => {
             console.log(error)
             if (error.response.status === 400) 
                 alert(error.response.data.detail)
+            
         })
 
 
@@ -137,7 +146,7 @@ export const DressContextProvider = ({children}) => {
             if (response.status === 200) {
                 alert("Dress modified successfully!")
                 navigate(0)
-                }
+            }
         }).catch((error) => {
             let errors = "";
             console.log(error)
@@ -167,7 +176,7 @@ export const DressContextProvider = ({children}) => {
         })
     }
 
-    const edit_loan=(loan,loan_id)=>{
+    const edit_loan = (loan, loan_id) => {
         const url = 'https://ssd.pingflood.tk/api/v1/loan/' + loan_id
         let payload = {
             "id": loan_id,
@@ -185,40 +194,40 @@ export const DressContextProvider = ({children}) => {
             if (response.status === 200) {
                 alert("Loan modified successfully!")
                 navigate(0)
-                }
+            }
         }).catch((error) => {
             let errors = "";
             console.log(error.response)
             if (error.response.status === 400) {
                 if (error.response.data.dress) {
                     errors += "\nDress:\t" + error.response.data.dress
-                    error.response.data.dress.map((el)=>errors+=el+'\n')
+                    error.response.data.dress.map((el) => errors += el + '\n')
                 }
                 if (error.response.data.startDate) {
                     errors += "\nStart Date:\t"
-                    error.response.data.startDate.map((el) => errors+=el+'\n')
+                    error.response.data.startDate.map((el) => errors += el + '\n')
                 }
                 if (error.response.data.endDate) {
                     errors += "\nEnd Date:\t"
-                    error.response.data.endDate.map((el) => errors+=el+'\n')
+                    error.response.data.endDate.map((el) => errors += el + '\n')
                 }
                 if (error.response.data.detail) {
-                    errors+=error.response.data.detail+'\n'
+                    errors += error.response.data.detail + '\n'
                 }
                 if (error.response.data.loaner) {
                     errors += "\nLoaner:\t"
-                    error.response.data.loaner.map((el) =>errors+=el+'\n')
+                    error.response.data.loaner.map((el) => errors += el + '\n')
                 }
-               
-            
+
+
                 alert(errors)
             }
 
         })
-    
+
 
     }
-    const remove_loan=(loan_id)=>{
+    const remove_loan = (loan_id) => {
         const url = 'https://ssd.pingflood.tk/api/v1/loan/' + loan_id
 
 
@@ -233,22 +242,27 @@ export const DressContextProvider = ({children}) => {
             if (error.response.status === 400) 
                 alert(error.response.data.detail)
 
+            
+
         })
 
 
     }
 
-    return (<DressContext.Provider value={
-        {
-            dress_loan,
-            add_new_dress,
-            remove_dress,
-            dress_rendered,
-            modify_dress,
-            edit_loan, 
-            remove_loan
-        }
-    }> {children} </DressContext.Provider>);
+    return (
+        <DressContext.Provider value={
+            {
+                dress_loan,
+                add_new_dress,
+                remove_dress,
+                dress_rendered,
+                modify_dress,
+                edit_loan,
+                remove_loan
+            }
+        }>
+            {children} </DressContext.Provider>
+    );
 };
 
 
