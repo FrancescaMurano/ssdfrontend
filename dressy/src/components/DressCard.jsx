@@ -136,7 +136,7 @@ const DressCard = ({dress}) => {
                     <> {
                         dress.deleted ? (
                             <div className="grid pl-2 pt-1 pb-1  grid-cols-2 bg-green-800/40 ">
-                                <h3 className="font-medium">Available:
+                                <h3 className="font-medium">Deleted:
                                 </h3>
                                 <h3> {
                                     dress.deleted.toString()
@@ -146,7 +146,7 @@ const DressCard = ({dress}) => {
                         ) : (
 
                             <div className="grid pl-2 pt-1 pb-1  grid-cols-2 bg-red-800/40 ">
-                                <h3 className="font-medium">Available:
+                                <h3 className="font-medium">Deleted:
                                 </h3>
                                 <h3> {
                                     dress.deleted.toString()
