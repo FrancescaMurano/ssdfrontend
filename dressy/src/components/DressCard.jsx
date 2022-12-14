@@ -162,11 +162,16 @@ const DressCard = ({dress}) => {
                         &#36;{
                         price_from_cents_to_euro(dress.priceInCents)
                     }/day</p>
-
-                    <BsFillCartPlusFill className="bg-red-800 h-8 w-8 p-2 rounded-2xl m-2" color="white"
+                {
+                    !dress.deleted ? (
+                        <BsFillCartPlusFill className="bg-red-800 h-8 w-8 p-2 rounded-2xl m-2" color="white"
                         onClick={
                             () => setShowForm(!showForm)
                         }/>
+                    ):(  <BsFillCartPlusFill className="opacity-20 bg-red-800 h-8 w-8 p-2 rounded-2xl m-2 cursor-auto" color="white"
+                   />)
+                }
+                   
                 </div>
                 {} </div>
         </>
