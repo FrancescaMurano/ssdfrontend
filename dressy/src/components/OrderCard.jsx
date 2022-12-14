@@ -28,7 +28,7 @@ return (
             ) : (
                     <div className="flex flex-col justify-between">
                             {
-                            !order.order.terminated ? (
+                            !order.order.terminated  & role === "commessi" ? (
                                 <>
                                 <div className=" flex flex-row w-full justify-between rounded"  >
                                    <div className="p-2">
